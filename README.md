@@ -1,8 +1,6 @@
 # Hybrid Supervised Instance Segmentation by Learning Label Noise Suppression
 
-```
-Linwei Chen, Ying Fu*, Shaodi You and Hongzhe Liu
-```
+	Linwei Chen, Ying Fu*, Shaodi You and Hongzhe Liu
 
 ------
 
@@ -17,6 +15,7 @@ Current fully supervised instance segmentation methods severely rely on the larg
 ![overview](./abstract.png)
 
 
+The code is being organized...
 
 ## Citation
 
@@ -24,17 +23,15 @@ If you use our code for research, please ensure that you cite our paper:
 
 > ```
 > @article{chen2022hybrid,
->   title={Hybrid supervised instance segmentation by learning label noise suppression},
->   author={Chen, Linwei and Fu, Ying and You, Shaodi and Liu, Hongzhe},
->   journal={Neurocomputing},
->   volume={496},
->   pages={131--146},
->   year={2022},
->   publisher={Elsevier}
-> }        
+>     title={Hybrid supervised instance segmentation by learning label noise suppression},
+>     author={Chen, Linwei and Fu, Ying and You, Shaodi and Liu, Hongzhe},
+>     journal={Neurocomputing},
+>     volume={496},
+>     pages={131--146},
+>     year={2022},
+>     publisher={Elsevier}
+>   }        
 > ```
-
-
 
 
 
