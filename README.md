@@ -15,8 +15,6 @@ Current fully supervised instance segmentation methods severely rely on the larg
 ![overview](./abstract.png)
 
 
-The code is being organized...
-
 ## Citation
 
 If you use our code for research, please ensure that you cite our paper:
