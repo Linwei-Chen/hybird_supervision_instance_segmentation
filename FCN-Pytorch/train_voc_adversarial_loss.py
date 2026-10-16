@@ -222,12 +222,12 @@ def train_voc():
     model_saver.load(name=args.optimizer, model=optimizer)
 
     D_optimizer = get_optimizer(args, name=args.optimizer, model=D)
-    model_saver.load(name='D_' + args.optimizer, model=optimizer)
+    model_saver.load(name='D_' + args.optimizer, model=D_optimizer)
 
     scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=optimizer, milestones=args.schedule, gamma=args.gamma)
     model_saver.load(name=args.scheduler_name, model=scheduler)
 
-    D_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=optimizer, milestones=args.schedule, gamma=args.gamma)
+    D_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=D_optimizer, milestones=args.schedule, gamma=args.gamma)
     model_saver.load(name='D_' + args.scheduler_name, model=scheduler)
 
     print('===> lr:{}'.format(optimizer.param_groups[0]['lr']))
@@ -288,7 +288,7 @@ def train_voc():
         model_saver.save(name=args.scheduler_name, model=scheduler)
         model_saver.save(name='D', model=D)
         model_saver.save(name='D_' + args.optimizer, model=D_optimizer)
-        model_saver.save(name='D_' + args.scheduler_name, model='D_' + args.scheduler)
+        model_saver.save(name='D_' + args.scheduler_name, model=D_scheduler)
         logger.save_log()
         logger.visualize()
 

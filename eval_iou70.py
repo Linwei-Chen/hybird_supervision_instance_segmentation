@@ -26,7 +26,7 @@ def main(gt_json, dt_json):
     e.evaluate()
     e.accumulate()
 
-    # precision: [T(iou) H(area) K(cls) A(maxdet) M(scores)]
+    # precision: [T(iou) R(recall) K(cls) A(area) M(maxdet)]
     p = e.eval['precision']
     ious = e.params.iouThrs
     print("== VOC protocol (segm AP, area=all, maxdet=100) ==")

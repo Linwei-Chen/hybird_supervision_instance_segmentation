@@ -1,4 +1,3 @@
-import tensorflow as tf
 import torch
 import torch.nn.functional as F
 from torch import nn
@@ -414,7 +413,7 @@ class AdaptiveAffinityLoss(nn.Module):
         self.num_classes = args.n_class
         self.size = size
 
-    def foward(self, labels, one_hot_lab, probs):
+    def forward(self, labels, one_hot_lab, probs):
         """Adaptive affinity field (AAF) loss.
 
         This function computes AAF loss. There are three components in the function:

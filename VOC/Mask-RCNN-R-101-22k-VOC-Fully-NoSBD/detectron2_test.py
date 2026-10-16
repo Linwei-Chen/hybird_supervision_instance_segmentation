@@ -109,7 +109,7 @@ def train_and_eval():
     # cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_1x.yaml"))
     cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml"))
     cfg.DATASETS.TRAIN = ("voc2012_train", )
-    cfg.DATASETS.TEST = ("voc2012_val")
+    cfg.DATASETS.TEST = ("voc2012_val",)
     cfg.DATALOADER.NUM_WORKERS = 4
     # Default
     # MODEL:

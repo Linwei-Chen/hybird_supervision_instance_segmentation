@@ -544,7 +544,7 @@ def _test_DIS():
     # testing the DIS
     from weakly_semi_supseg.weakly_semi_model import Configuration
     from train_utils import config
-    from src.dataset.weaklysemidataset.sbd_bbox_seg_dataset import get_sbd_data_loader
+    from dataset.weaklysemidataset.sbd_bbox_seg_dataset import get_sbd_data_loader
     from torchvision import transforms
     from logger import ModelSaver
     un_normalize = transforms.Normalize(mean=[1 / i for i in [0.485, 0.456, 0.406]],

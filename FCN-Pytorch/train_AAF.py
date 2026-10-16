@@ -36,7 +36,7 @@ class AdaptiveAffinityField(nn.Module):
         self.w_focal_loss = nn.Parameter(torch.ones(1, args.n_class, 1, 1), requires_grad=True)
         self._weights_init()
         self.focal_loss_gamma = gamma
-        self.adaptive_affinity_loss = AdaptiveAffinityLoss()
+        self.adaptive_affinity_loss = adaptive_affinity_loss
 
     def forward(self, input: torch.Tensor, target: torch.Tensor, ):
         one_hot_targets_chw = label_to_one_hot(target, self.n_class)

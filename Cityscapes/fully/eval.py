@@ -95,7 +95,7 @@ def train_and_eval():
     args.dist_url = f'tcp://127.0.0.1:{random.randint(0, 65500)}'
     print("Command Line Args:", args)
 
-    from detectron2.evaluation import COCOEvaluator, inference_on_dataset, CityscapesEvaluator
+    from detectron2.evaluation import COCOEvaluator, inference_on_dataset, CityscapesInstanceEvaluator
     from detectron2.data import build_detection_test_loader
     cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS = False
     trainer = DefaultTrainer(cfg)

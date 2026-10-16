@@ -26,7 +26,16 @@ class AffinityField(nn.Module):
     def __init__(self, args, kld_margin=5, gamma=2):
         super().__init__()
         self.n_class = args.n_class
+        self.kld_margin = kld_margin
         self.focal_loss_gamma = gamma
+        self.w_not_edge3 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_not_edge5 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_not_edge7 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_edge3 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_edge5 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_edge7 = nn.Parameter(torch.ones(1, 1, 1, args.n_class, 1), requires_grad=True)
+        self.w_focal_loss = nn.Parameter(torch.ones(1, args.n_class, 1, 1), requires_grad=True)
+        self._weights_init()
 
     def forward(self, input: torch.Tensor, target: torch.Tensor, ):
         one_hot_targets_chw = label_to_one_hot(target, self.n_class)
@@ -72,7 +81,7 @@ class AffinityField(nn.Module):
 
 def _test_aff():
     args = config()
-    aaf = AdaptiveAffinityField(args)
+    aaf = AffinityField(args)
     print(aaf)
 
 
@@ -135,7 +144,7 @@ def train_voc():
     model_saver.load(name=args.model_name, model=model)
     print(f'*** model is nn.DataParallel:{isinstance(model, nn.DataParallel)}')
 
-    aaf = AdaptiveAffinityField(args)
+    aaf = AffinityField(args)
     aaf = model_accelerate(args, aaf)
     model_saver.load(name='aaf', model=aaf)
 

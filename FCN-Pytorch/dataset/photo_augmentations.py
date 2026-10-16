@@ -265,7 +265,8 @@ class PhotometricDistortWithBBox(object):
 
 def _test():
     from torchvision import transforms
-    transforms = transforms.Compose([Posterize(), Solorize(), Equalize(), Sharpness()])
+    from dataset.AutoAugmentation import Posterize, Solarize, Equalize, Sharpness
+    transforms = transforms.Compose([Posterize(), Solarize(), Equalize(), Sharpness()])
 
 
 if __name__ == '__main__':

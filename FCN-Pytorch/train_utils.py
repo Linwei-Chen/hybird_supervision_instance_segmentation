@@ -61,6 +61,8 @@ def config():
     parser.add_argument('--save', '-s', type=str, default=None, help='Folder to save checkpoints.')
     parser.add_argument('--save_steps', '-ss', type=int, default=50, help='steps to save checkpoints.')
 
+    parser.add_argument('--eval', type=int, default=0, help='if 1, only eval, skip training.')
+
     parser.add_argument('--test_dataset', type=str, default=None, choices=['2011', '2012'], help='Test only flag.')
 
     # Architecture

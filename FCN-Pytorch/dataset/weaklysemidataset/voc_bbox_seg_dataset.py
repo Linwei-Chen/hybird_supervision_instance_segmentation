@@ -17,6 +17,7 @@ from dataset.weaklysemidataset.segmentation_transform import Compose2, Resize, N
     ToTensor, RandomResizedCrop, RandomRotation, RandomCrop, SampleParing, CutOut
 from dataset.voc_dataset import MEAN, STD
 from dataset.photo_augmentations import PhotometricDistortWithBBox
+from dataset.AutoAugmentation import AutoAugmentation
 import numpy as np
 from criterion import label_to_one_hot
 

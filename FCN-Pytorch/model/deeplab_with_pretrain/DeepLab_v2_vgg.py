@@ -72,7 +72,7 @@ class Atrous_module(nn.Module):
 
 class DeepLabv1_ASPP(nn.Module):
     def __init__(self, num_classes, small=True, pretrained=False):
-        super(DeepLabv2_ASPP, self).__init__()
+        super(DeepLabv1_ASPP, self).__init__()
         self.vgg_feature = VGG16_feature(pretrained)
 
         if small:
@@ -98,7 +98,7 @@ class DeepLabv1_ASPP(nn.Module):
 
 class DeepLabv1_FOV(nn.Module):
     def __init__(self, num_classes, pretrained=True):
-        super(DeepLabv2_FOV, self).__init__()
+        super(DeepLabv1_FOV, self).__init__()
         self.vgg_feature = VGG16_feature(pretrained)
 
         self.atrous = Atrous_module(2048 , num_classes, rate=12)

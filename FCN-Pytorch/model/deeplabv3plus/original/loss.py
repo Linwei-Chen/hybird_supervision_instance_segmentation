@@ -31,5 +31,5 @@ class MaskBCELoss(MaskLoss):
 
 class MaskBCEWithLogitsLoss(MaskLoss):
 	def __init__(self,reduction='all'):
-		super(MaskBCEwithLogitsLoss, self).__init__(reduction)
+		super(MaskBCEWithLogitsLoss, self).__init__(reduction)
 		self.loss = torch.nn.BCEWithLogitsLoss(reduction='none')

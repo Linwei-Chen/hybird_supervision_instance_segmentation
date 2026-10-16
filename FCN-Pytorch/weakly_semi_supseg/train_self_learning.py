@@ -16,17 +16,17 @@ import torch.optim as optim
 import numpy as np
 import time
 import argparse
-from src.logger import Logger, ModelSaver
-from src.weakly_semi_supseg.weakly_semi_model import get_anc_model, get_self_learning_model
+from logger import Logger, ModelSaver
+from weakly_semi_supseg.weakly_semi_model import get_anc_model, get_self_learning_model
 from torchvision import transforms
 from criterion import FocalLoss
-from src.train_utils import config, get_device, model_accelerate, get_optimizer, get_lr, update_lr, poly_adjust_lr
-from src.weakly_semi_supseg.eval_anc import validation
-from src.criterion import get_criterion
-from src.dataset.sbd_dataset import SBDDataLoaderCreator
-from src.dataset.weaklysemidataset.voc_bbox_seg_dataset import get_voc_data_loader
-from src.dataset.weaklysemidataset.sbd_bbox_seg_dataset import get_sbd_data_loader
-from src.criterion import label_to_one_hot
+from train_utils import config, get_device, model_accelerate, get_optimizer, get_lr, update_lr, poly_adjust_lr
+from weakly_semi_supseg.eval_anc import validation
+from criterion import get_criterion
+from dataset.sbd_dataset import SBDDataLoaderCreator
+from dataset.weaklysemidataset.voc_bbox_seg_dataset import get_voc_data_loader
+from dataset.weaklysemidataset.sbd_bbox_seg_dataset import get_sbd_data_loader
+from criterion import label_to_one_hot
 import gc
 
 

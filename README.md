@@ -4,7 +4,7 @@
 >
 > **Paper**: [*Hybrid Supervised Instance Segmentation by Learning Label Noise Suppression*](https://www.sciencedirect.com/science/article/pii/S0925231222005574), Neurocomputing 496:131-146, 2022.
 
-Official implementation on **PASCAL VOC 2012** and **Cityscapes**. This repo releases the complete training/evaluation code of our hybrid (weak + semi + full) supervised instance segmentation framework, together with the **verbatim evaluation logs of every experiment in the paper**, so that each table entry can be traced to its original record.
+Official implementation on **PASCAL VOC 2012** and **Cityscapes**. This repo releases the complete training/evaluation code of our hybrid (weak + semi + full) supervised instance segmentation framework, together with the **verbatim evaluation logs of the paper's experiments**, so that the reported numbers can be traced to their original records (the main-table rows are covered; see *Reproducing the paper numbers*).
 
 This is the journal extension of our Remote Sensing 2021 paper on aerial images ([Efficient Hybrid Supervision for Instance Segmentation in Aerial Images](https://github.com/Linwei-Chen/Efficient-Hybrid-Supervision-for-Instance-Segmentation-in-Aerial-Images)); the semantic branch code (`SpatialEmbeddings/`) is shared between the two repos.
 
@@ -36,7 +36,7 @@ Cityscapes-Semi/              # Cityscapes semi-supervised variants (incl. balan
 R-101-22k-VOC-Weakly-fix_lr/  # weakly-supervised VOC baseline (ResNet-101, 22k iters)
 FCN-Pytorch/                  # ancillary model 1: DeepLab-v3+ semantic segmentation (train/eval/self-learning)
 SpatialEmbeddings/            # ancillary model 2: instance-discrimination semantic branch + pseudo-mask generation
-results/                      # verbatim result.txt of every experiment — the paper numbers' source
+results/                      # verbatim result.txt of the paper's evaluated rows — the paper numbers' source
 eval_iou70.py                 # reproduces the paper's mAPr@0.5/0.7/0.75 protocol from a COCOEvaluator output
 ```
 
@@ -45,7 +45,7 @@ Each experiment directory contains its own `detectron2_test.py` (training/evalua
 ## Environment (historical, as verified in 2026)
 
 - Python 3.6 / PyTorch 1.10.1 + CUDA 11.3
-- detectron2 **v0.6** (build from source; the code was originally developed on a 2020-era fork)
+- detectron2 **v0.6** (built from source; the code was originally developed on a 2020-era fork)
 - opencv 4.3.0.38, shapely 1.7.1, pycocotools, cityscapesscripts 2.3.0
 
 ```bash

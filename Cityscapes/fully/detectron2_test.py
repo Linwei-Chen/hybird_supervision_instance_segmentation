@@ -117,14 +117,14 @@ def train_and_eval():
     )
     """
 
-    from detectron2.evaluation import COCOEvaluator, inference_on_dataset, CityscapesEvaluator
+    from detectron2.evaluation import COCOEvaluator, inference_on_dataset, CityscapesInstanceEvaluator
     from detectron2.data import build_detection_test_loader
     cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS = False
     trainer = DefaultTrainer(cfg)
     trainer.resume_or_load(resume=True)
     # trainer.resume_or_load(resume=False)
     # evaluator = COCOEvaluator("cityscapes_val", cfg, False, output_dir=cfg.OUTPUT_DIR)
-    evaluator = CityscapesEvaluator("cityscapes_val")
+    evaluator = CityscapesInstanceEvaluator("cityscapes_val")
     val_loader = build_detection_test_loader(cfg, "cityscapes_val")
     inference_on_dataset(trainer.model, val_loader, evaluator)
 
