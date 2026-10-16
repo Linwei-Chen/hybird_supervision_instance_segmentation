@@ -1,0 +1,219 @@
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=1.86s).
+Accumulating evaluation results...
+DONE (t=0.45s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.451
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.726
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.494
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.169
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.402
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.550
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.411
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.543
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.545
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.196
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.481
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.662
+[05/29 13:46:20 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 45.143 | 72.637 | 49.426 | 16.886 | 40.202 | 55.042 |
+[05/29 13:46:20 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 53.944 | bicycle     | 47.108 | bird       | 51.739 |
+| boat        | 37.980 | bottle      | 29.334 | bus        | 62.022 |
+| car         | 42.686 | cat         | 54.455 | chair      | 25.094 |
+| cow         | 48.999 | diningtable | 32.864 | dog        | 56.311 |
+| horse       | 52.265 | motorbike   | 49.254 | person     | 47.558 |
+| pottedplant | 23.191 | sheep       | 44.530 | sofa       | 41.268 |
+| train       | 54.430 | tvmonitor   | 47.819 |            |        |
+Loading and preparing results...
+DONE (t=0.14s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=2.10s).
+Accumulating evaluation results...
+DONE (t=0.44s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.342
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.607
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.342
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.047
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.252
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.458
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.332
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.072
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.321
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.541
+[05/29 13:46:23 d2.evaluation.coco_evaluation]: Evaluation results for segm: 
+|   AP   |  AP50  |  AP75  |  APs  |  APm   |  APl   |
+|:------:|:------:|:------:|:-----:|:------:|:------:|
+| 34.167 | 60.661 | 34.204 | 4.656 | 25.232 | 45.784 |
+[05/29 13:46:23 d2.evaluation.coco_evaluation]: Per-category segm AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 36.630 | bicycle     | 0.103  | bird       | 46.515 |
+| boat        | 21.171 | bottle      | 24.359 | bus        | 60.349 |
+| car         | 36.040 | cat         | 56.402 | chair      | 5.538  |
+| cow         | 38.811 | diningtable | 21.740 | dog        | 51.709 |
+| horse       | 33.031 | motorbike   | 35.484 | person     | 31.693 |
+| pottedplant | 13.352 | sheep       | 30.415 | sofa       | 33.887 |
+| train       | 55.668 | tvmonitor   | 50.444 |            |        |
+
+
+
+
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=2.03s).
+Accumulating evaluation results...
+DONE (t=0.57s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.451
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.726
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.571
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.494
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.169
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.402
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.550
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.411
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.543
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.545
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.196
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.481
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.662
+[06/02 02:47:40 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 45.143 | 57.058 | 49.426 | 16.886 | 40.202 | 55.042 |
+[06/02 02:47:40 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 53.944 | bicycle     | 47.108 | bird       | 51.739 |
+| boat        | 37.980 | bottle      | 29.334 | bus        | 62.022 |
+| car         | 42.686 | cat         | 54.455 | chair      | 25.094 |
+| cow         | 48.999 | diningtable | 32.864 | dog        | 56.311 |
+| horse       | 52.265 | motorbike   | 49.254 | person     | 47.558 |
+| pottedplant | 23.191 | sheep       | 44.530 | sofa       | 41.268 |
+| train       | 54.430 | tvmonitor   | 47.819 |            |        |
+Loading and preparing results...
+DONE (t=0.15s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=2.21s).
+Accumulating evaluation results...
+DONE (t=0.46s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.342
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.607
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.417
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.342
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.047
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.252
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.458
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.332
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.072
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.321
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.541
+[06/02 02:47:43 d2.evaluation.coco_evaluation]: Evaluation results for segm: 
+|   AP   |  AP50  |  AP75  |  APs  |  APm   |  APl   |
+|:------:|:------:|:------:|:-----:|:------:|:------:|
+| 34.167 | 41.713 | 34.204 | 4.656 | 25.232 | 45.784 |
+[06/02 02:47:43 d2.evaluation.coco_evaluation]: Per-category segm AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 36.630 | bicycle     | 0.103  | bird       | 46.515 |
+| boat        | 21.171 | bottle      | 24.359 | bus        | 60.349 |
+| car         | 36.040 | cat         | 56.402 | chair      | 5.538  |
+| cow         | 38.811 | diningtable | 21.740 | dog        | 51.709 |
+| horse       | 33.031 | motorbike   | 35.484 | person     | 31.693 |
+| pottedplant | 13.352 | sheep       | 30.415 | sofa       | 33.887 |
+| train       | 55.668 | tvmonitor   | 50.444 |            |        |
+
+with VOC
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.465
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.737
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.594
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.510
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.207
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.413
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.571
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.421
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.556
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.558
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.233
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.488
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.678
+[08/31 01:11:59 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 46.529 | 59.398 | 51.028 | 20.722 | 41.300 | 57.110 |
+[08/31 01:11:59 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 53.515 | bicycle     | 50.291 | bird       | 51.885 |
+| boat        | 41.787 | bottle      | 31.407 | bus        | 62.426 |
+| car         | 43.254 | cat         | 57.882 | chair      | 25.383 |
+| cow         | 46.027 | diningtable | 36.731 | dog        | 59.128 |
+| horse       | 53.271 | motorbike   | 54.100 | person     | 47.180 |
+| pottedplant | 26.812 | sheep       | 45.068 | sofa       | 42.209 |
+| train       | 53.171 | tvmonitor   | 49.047 |            |        |
+Loading and preparing results...
+DONE (t=0.18s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=2.41s).
+Accumulating evaluation results...
+DONE (t=0.52s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.349
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.618
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.427
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.352
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.060
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.256
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.468
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.337
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.426
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.427
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.101
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.328
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.550
+[08/31 01:12:02 d2.evaluation.coco_evaluation]: Evaluation results for segm: 
+|   AP   |  AP50  |  AP75  |  APs  |  APm   |  APl   |
+|:------:|:------:|:------:|:-----:|:------:|:------:|
+| 34.864 | 42.725 | 35.196 | 6.021 | 25.643 | 46.822 |
+[08/31 01:12:02 d2.evaluation.coco_evaluation]: Per-category segm AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 37.463 | bicycle     | 0.112  | bird       | 48.239 |
+| boat        | 22.867 | bottle      | 27.242 | bus        | 59.816 |
+| car         | 35.365 | cat         | 58.820 | chair      | 5.762  |
+| cow         | 39.874 | diningtable | 21.293 | dog        | 52.563 |
+| horse       | 33.599 | motorbike   | 37.118 | person     | 31.612 |
+| pottedplant | 13.729 | sheep       | 31.784 | sofa       | 34.238 |
+| train       | 55.652 | tvmonitor   | 50.123 |            |        |
+
+
+
+

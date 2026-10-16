@@ -1,0 +1,65 @@
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.502
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.765
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.635
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.564
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.242
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.433
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.606
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.447
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.587
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.589
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.281
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.510
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.705
+[09/06 03:46:16 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 50.228 | 63.546 | 56.375 | 24.197 | 43.329 | 60.602 |
+[09/06 03:46:16 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 59.768 | bicycle     | 49.579 | bird       | 57.423 |
+| boat        | 43.013 | bottle      | 37.508 | bus        | 65.540 |
+| car         | 46.928 | cat         | 64.151 | chair      | 28.870 |
+| cow         | 52.425 | diningtable | 38.493 | dog        | 63.596 |
+| horse       | 58.640 | motorbike   | 59.316 | person     | 51.309 |
+| pottedplant | 28.071 | sheep       | 47.807 | sofa       | 45.157 |
+| train       | 56.422 | tvmonitor   | 50.541 |            |        |
+Loading and preparing results...
+DONE (t=0.17s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=2.77s).
+Accumulating evaluation results...
+DONE (t=0.57s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.412
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.670
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.506
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.448
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.131
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.340
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.518
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.380
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.495
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.495
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.176
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.419
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.601
+[09/06 03:46:19 d2.evaluation.coco_evaluation]: Evaluation results for segm: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 41.206 | 50.616 | 44.810 | 13.052 | 34.000 | 51.809 |
+[09/06 03:46:19 d2.evaluation.coco_evaluation]: Per-category segm AP: 
+| category    | AP     | category    | AP     | category   | AP     |
+|:------------|:-------|:------------|:-------|:-----------|:-------|
+| aeroplane   | 46.706 | bicycle     | 0.237  | bird       | 53.845 |
+| boat        | 26.295 | bottle      | 36.593 | bus        | 68.174 |
+| car         | 43.721 | cat         | 69.195 | chair      | 9.221  |
+| cow         | 44.049 | diningtable | 25.589 | dog        | 60.485 |
+| horse       | 39.560 | motorbike   | 44.508 | person     | 41.678 |
+| pottedplant | 17.598 | sheep       | 41.761 | sofa       | 40.860 |
+| train       | 59.137 | tvmonitor   | 54.905 |            |        |

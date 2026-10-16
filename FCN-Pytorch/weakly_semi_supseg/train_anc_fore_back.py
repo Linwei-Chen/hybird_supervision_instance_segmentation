@@ -1,0 +1,193 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import sys
+import os.path as osp
+sys.path.append(osp.join(sys.path[0], '../'))
+sys.path.append('../')
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+import numpy as np
+import time
+import argparse
+from src.logger import Logger, ModelSaver
+from src.weakly_semi_supseg.weakly_semi_model import get_anc_fore_back_model
+from src.train_utils import config, get_device, model_accelerate, get_optimizer, get_lr, update_lr, poly_adjust_lr
+from src.weakly_semi_supseg.eval_anc import validation
+from src.criterion import get_criterion
+from src.dataset.sbd_dataset import SBDDataLoaderCreator
+from src.dataset.weaklysemidataset.voc_bbox_seg_dataset import get_voc_data_loader
+from src.criterion import label_to_one_hot
+
+
+# train function (forward, backward, update)
+def train_one_epoch(args, model, optimizer, train_loader, logger, model_saver):
+    # use focal loss or not
+    criterion = get_criterion(args)
+    if torch.cuda.device_count() > 1:
+        criterion = nn.DataParallel(criterion)
+    model.train()
+    # model.eval()
+    train_loss = 0
+    device = get_device(args)
+    for step, (imgs, targets, bbox_targets) in enumerate(train_loader, start=1):
+        iter = logger.size(key='train_loss')
+
+        # poly scheduler
+        if args.scheduler == 'poly':
+            poly_adjust_lr(optimizer, lr=args.lr if args.lr_update is None else args.lr_update,
+                           itr=iter, max_itr=args.max_iter)
+        t1 = time.perf_counter()
+        optimizer.zero_grad()
+        # print(f'imgs:{imgs}\ntargets:{targets}')
+        imgs, targets, bbox_targets = imgs.to(device), targets.to(device), bbox_targets.to(device)
+
+        # Upsampling training
+        try:
+            model(None, target_one_hot=label_to_one_hot(targets, args.n_class), optimizer=optimizer)
+        except Exception:
+            pass
+
+        outs = model(imgs, bbox_targets)
+        loss = 0
+
+        # multi loss training
+        if isinstance(outs, tuple) or isinstance(outs, list):
+            if 'enc' in args.criterion.lower():
+                loss = criterion(outs, targets)
+            else:
+                for i in outs:
+                    # print('multi')
+                    loss += criterion(input=i, target=targets)
+        else:
+            loss = criterion(input=outs, target=targets)
+
+        # if isinstance(criterion, nn.DataParallel):
+        #     loss.mean().backward()
+        # else:
+        #     loss.backward()
+
+        # loss = loss.mean()
+        # loss.backward(retain_graph=True)
+        loss = loss.unsqueeze(dim=0).mean()
+        loss.backward()
+
+        if isinstance(optimizer, nn.DataParallel):
+            optimizer.module.step()
+        else:
+            optimizer.step()
+
+        t2 = time.perf_counter()
+        print(f'{args.model_name} | step:{step} [{step}/{len(train_loader)}] [{iter}/{args.max_iter}] '
+              f'| {len(outs)}loss:{loss.item():.8f} | lr:{get_lr(optimizer):.12f} | time:{t2 - t1:.4f}')
+        logger.log(key='train_loss', data=loss.item())
+        train_loss += loss.item()
+
+        # save the model, optimizer every args.save_steps
+        if step % args.save_steps == 0:
+            logger.visualize(key='train_loss', range=(-1000, -1))
+            logger.save_log()
+            model_saver.save(name=args.model_name, model=model)
+            model_saver.save(name=args.optimizer, model=optimizer)
+            # break
+
+    return train_loss
+
+
+def train_voc():
+    torch.cuda.manual_seed(1337)
+    torch.cuda.manual_seed_all(1337)
+    # init the tools
+    args = config()
+
+    json_name = args.optimizer if args.test_dataset is None else f'{args.optimizer}_VOC{args.test_dataset}'
+    logger = Logger(save_path=args.save, json_name=json_name)
+    model_saver = ModelSaver(save_path=args.save, name_list=[args.optimizer, args.model_name, args.scheduler_name])
+
+    # get model and accelerate the model training
+    model = get_anc_fore_back_model(name=args.model_name, n_class=args.n_class)
+    model = model_accelerate(args, model)
+    model_saver.load(name=args.model_name, model=model)
+    print(f'*** model is nn.DataParallel:{isinstance(model, nn.DataParallel)}')
+
+    # get optimizer
+    optimizer = get_optimizer(args, name=args.optimizer, model=model)
+    # if torch.cuda.device_count() > 1:
+    #     optimizer = nn.DataParallel(optimizer)
+    model_saver.load(name=args.optimizer, model=optimizer)
+
+    if isinstance(optimizer, nn.DataParallel):
+        scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=optimizer.module,
+                                                         milestones=args.schedule, gamma=args.gamma)
+    else:
+        scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=optimizer,
+                                                         milestones=args.schedule, gamma=args.gamma)
+    model_saver.load(name=args.scheduler_name, model=scheduler)
+
+    try:
+        print('===> lr:{}'.format(optimizer.param_groups[0]['lr']))
+        print('===> scheduler state dict:{}'.format(scheduler.state_dict()))
+    except Exception:
+        pass
+
+    if args.lr_update is not None:
+        update_lr(optimizer, lr=args.lr_update)
+        if isinstance(optimizer, nn.DataParallel):
+            print('===> lr now:{}'.format(optimizer.module.param_groups[0]['lr']))
+        else:
+            print('===> lr now:{}'.format(optimizer.param_groups[0]['lr']))
+
+        try:
+            if isinstance(optimizer, nn.DataParallel):
+                print('===> lr now:{}'.format(optimizer.module.param_groups[1]['lr']))
+            else:
+                print('===> lr now:{}'.format(optimizer.param_groups[1]['lr']))
+        except Exception:
+            pass
+
+    # Main loop
+    for _ in range(args.epochs):
+        # get dataset
+        voc2012_train_loader = get_voc_data_loader(args, sub_mean=args.std > 0, stdize=args.std > 1, train=True, aug=args.aug)
+        args.max_iter = ((len(voc2012_train_loader) if 'voc' in args.train_voc_dataset else 0)) * args.epochs
+        # val(args, model, scheduler, val_loader, logger, model_saver)
+        val_loader = get_voc_data_loader(args, sub_mean=args.std > 0, stdize=args.std > 1, train=False, aug=args.aug)
+
+        scheduler.step()
+        epoch_now = scheduler.state_dict()['last_epoch']
+        print(f'*** Epoch now:{epoch_now}.')
+
+        if epoch_now >= args.epochs:
+            print('*** Training finished!')
+
+        train_loss_1, train_loss_2 = 0, 0
+        if 'voc' in args.train_voc_dataset:
+            train_loss_2 = train_one_epoch(args, model, optimizer, voc2012_train_loader, logger, model_saver)
+
+        acc, acc_cls, mean_iu, fwavacc, iu = validation(args, model, val_loader)
+        if logger.get_max(key='MeanIoU') < mean_iu or logger.get_max(key='MeanPixel') < acc:
+            model_saver.save(name=args.model_name + f'_miou_{mean_iu:.4f}_pa_{acc:.4f}', model=model)
+
+        logger.log(key='MeanIoU', data=mean_iu, show=True)
+        logger.log(key='FWIoU', data=fwavacc, show=True)
+        logger.log(key='IoUs', data=iu, show=True)
+        logger.log(key='MeanPixel', data=acc, show=True)
+        logger.log(key='ClassPixel', data=acc_cls, show=True)
+        logger.log(key='TrainLoss', data=train_loss_1 + train_loss_2, show=True)
+
+        model_saver.save(name=args.model_name, model=model)
+        model_saver.save(name=args.optimizer, model=optimizer)
+        model_saver.save(name=args.scheduler_name, model=scheduler)
+        logger.save_log()
+        logger.visualize()
+
+
+def train_cityscape():
+    pass
+
+
+if __name__ == "__main__":
+    train_voc()

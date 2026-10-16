@@ -1,0 +1,17 @@
+# Historical environment verified in 2026: Python 3.6.15
+# PyTorch wheels for CUDA 11.3:
+#   pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 \
+#       -f https://download.pytorch.org/whl/cu113/torch_stable.html
+torch==1.10.1
+torchvision==0.11.2
+numpy
+opencv-python-headless==4.3.0.38
+shapely==1.7.1
+pycocotools
+cityscapesscripts==2.3.0
+tqdm
+Pillow
+scikit-image
+
+# detectron2 v0.6 must be built from source (not on PyPI):
+#   python -m pip install 'git+https://github.com/facebookresearch/detectron2.git@v0.6'

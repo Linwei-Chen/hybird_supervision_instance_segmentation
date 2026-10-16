@@ -1,0 +1,20 @@
+Creating ground truth instances from png files.
+Processing 500 images...
+Images Processed: 500 
+Matching 500 pairs of images...
+Images Processed: 500 
+
+##################################################
+what           :             AP         AP_50%
+##################################################
+person         :          0.277          0.599
+rider          :          0.225          0.621
+car            :          0.439          0.669
+truck          :          0.264          0.438
+bus            :          0.513          0.757
+train          :          0.333          0.583
+motorcycle     :          0.137          0.370
+bicycle        :          0.171          0.476
+--------------------------------------------------
+average        :          0.295          0.564
+
